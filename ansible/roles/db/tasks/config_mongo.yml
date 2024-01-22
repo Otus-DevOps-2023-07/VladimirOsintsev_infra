@@ -1,0 +1,9 @@
+---
+- name:  daemon_reload
+  systemd: daemon_reload=true
+- name: Change mongo config file
+  template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+    mode: 0644
+  notify: restart mongod
